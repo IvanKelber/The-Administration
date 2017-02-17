@@ -23,15 +23,17 @@ textarea {
   margin-bottom: 10px;
 }
 
-// .button {
-//   background-color: green;
-//   border-color: green;
-//   &:hover{
-//     background-color:lightgreen;
-//     color: $gray;
-//   }
-//
-// }
+//===============Forms=====================
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  // @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
 
 //===========Logo=============
 #logo {

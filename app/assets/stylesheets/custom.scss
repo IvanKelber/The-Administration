@@ -23,16 +23,26 @@ textarea {
   margin-bottom: 10px;
 }
 
+// .button {
+//   background-color: green;
+//   border-color: green;
+//   &:hover{
+//     background-color:lightgreen;
+//     color: $gray;
+//   }
+//
+// }
+
 //===========Logo=============
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
+  margin-right: 0px;
+  font-size: 2em;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 0px;
-  padding-top: 9px;
-  font-weight: bold;
+  letter-spacing: -2px;
+  padding-top: 7px;
+  font-weight: thin;
   &:hover {
     color: lightgreen;
     text-decoration: none;

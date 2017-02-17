@@ -1,23 +1,29 @@
 require 'test_helper'
 
 class SkeletonControllerTest < ActionDispatch::IntegrationTest
+
+  test "should get root" do
+    get root_path
+    assert_response :success
+  end
+
   test "should get media" do
-    get skeleton_media_url
+    get media_path
     assert_response :success
   end
 
   test "should get rules" do
-    get skeleton_rules_url
+    get rules_path
     assert_response :success
   end
 
   test "should get about" do
-    get skeleton_about_url
+    get about_path
     assert_response :success
   end
 
   test "should get contact" do
-    get skeleton_contact_url
+    get contact_path
     assert_response :success
   end
 

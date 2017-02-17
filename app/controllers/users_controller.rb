@@ -8,7 +8,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    redirect_to root_url #temporary of course
+    @user = User.new(user_params)    # Not the final implementation!
+    if @user.save
+      # Handle a successful save.
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -24,4 +31,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :email, :current_password, :password, :password_confirmation)
+
+    end
 end

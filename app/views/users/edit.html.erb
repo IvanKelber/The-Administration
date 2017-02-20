@@ -1,2 +1,8 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% provide(:title, 'Edit account') %>
+<% provide(:button_text, 'Update account') %>
+
+<h1>Edit account</h1>
+
+<div class="row">
+  <%= render 'form' %>
+</div>

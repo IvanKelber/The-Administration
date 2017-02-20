@@ -1,4 +1,5 @@
 class SkeletonController < ApplicationController
+  
 
   def home
   end
@@ -14,5 +15,5 @@ class SkeletonController < ApplicationController
 
   def contact
   end
-  
+
 end

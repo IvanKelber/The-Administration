@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220161909) do
+ActiveRecord::Schema.define(version: 20170221025821) do
+
+  create_table "components", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "category"
+    t.integer  "min_teams"
+    t.integer  "max_teams"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id", "created_at"], name: "index_components_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_components_on_user_id"
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string   "word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "supplies", force: :cascade do |t|
+    t.string   "item"
+    t.integer  "component_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["component_id"], name: "index_supplies_on_component_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -1,6 +1,8 @@
 class Component < ApplicationRecord
   belongs_to :user
-
+  has_many :component_keyword_joins
+  has_many :keywords, through: :component_keyword_joins
+  
   validates :name, presence:true
   validates :description, presence:true, length:{maximum:1000}
   validates :category, presence:true

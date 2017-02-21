@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221025821) do
+ActiveRecord::Schema.define(version: 20170221143839) do
+
+  create_table "component_keyword_joins", force: :cascade do |t|
+    t.integer  "component_id"
+    t.integer  "keyword_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["component_id"], name: "index_component_keyword_joins_on_component_id"
+    t.index ["keyword_id"], name: "index_component_keyword_joins_on_keyword_id"
+  end
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -29,14 +38,6 @@ ActiveRecord::Schema.define(version: 20170221025821) do
     t.string   "word"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "supplies", force: :cascade do |t|
-    t.string   "item"
-    t.integer  "component_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["component_id"], name: "index_supplies_on_component_id"
   end
 
   create_table "users", force: :cascade do |t|

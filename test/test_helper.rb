@@ -18,6 +18,11 @@ class ActiveSupport::TestCase
     session[:user_id] = user.id
   end
 
+  def create_component(user)
+    c = user.components.build(name:"unique",description:"unique af",min_teams:1,max_teams:4,category:"Alcohol")
+    c.save
+  end
+
 end
 
 class ActionDispatch::IntegrationTest

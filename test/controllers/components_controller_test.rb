@@ -23,4 +23,18 @@ class ComponentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "admin can create components" do
+    log_in_as @admin
+    get components_path
+    component = create_component @admin
+    assert component
+  end
+
+  test "user can't create components" do
+    log_in_as @glick
+    get components_path
+    component = create_component @glick
+    assert_not component
+  end
+
 end

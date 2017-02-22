@@ -6,7 +6,7 @@ chug:
   category: Alcohol
   min_teams: 1
   max_teams: 4
-  user: glick
+  user: admin
 
 throw:
   name: Bag Throw

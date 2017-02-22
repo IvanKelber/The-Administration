@@ -12,7 +12,7 @@ class Component < ApplicationRecord
   validates :min_teams, presence:true, numericality:{only_integer:true,greater_than:0,less_than:5}
   validates :max_teams, presence:true, numericality:{only_integer:true,greater_than:0,less_than:5}
   validate :min_less_than_max
-
+  validate :user_is_admin
 
   private
 
@@ -21,6 +21,12 @@ class Component < ApplicationRecord
         if self.min_teams > self.max_teams
           errors.add(:min_teams,"can't be greater than max teams")
         end
+      end
+    end
+
+    def user_is_admin
+      if(self.user && !self.user.admin?)
+        errors.add(:user,"must be an admin")
       end
     end
 end

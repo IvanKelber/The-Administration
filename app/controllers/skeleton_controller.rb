@@ -1,5 +1,5 @@
 class SkeletonController < ApplicationController
-  
+  before_action :logged_in_user, only:[:media]
 
   def home
   end

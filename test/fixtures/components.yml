@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  category: MyString
+chug:
+  name: Beer Chug
+  description: Chug a beer
+  category: Alcohol
   min_teams: 1
-  max_teams: 1
-  user: one
+  max_teams: 4
+  user: glick
 
-two:
-  name: MyString
-  description: MyText
-  category: MyString
+throw:
+  name: Bag Throw
+  description: Throw sandbags
+  category: Physical
   min_teams: 1
-  max_teams: 1
-  user: two
+  max_teams: 4
+  user: admin

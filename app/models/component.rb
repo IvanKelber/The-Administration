@@ -19,7 +19,7 @@ class Component < ApplicationRecord
     def min_less_than_max
       if self.min_teams && self.max_teams
         if self.min_teams > self.max_teams
-          errors.add(:min_teams,"can't be greater than max_teams")
+          errors.add(:min_teams,"can't be greater than max teams")
         end
       end
     end

@@ -6,7 +6,7 @@
     <%= f.text_field :name, class: "form-control" %>
 
     <%= f.label :category %>
-    <%= f.select :category,{Alcohol:1,Physical:2,Puzzle:3},include_blank:true, class: "form-control" %>
+    <%= f.select :category,{"Alcohol":"Alcohol","Physical":"Physical","Puzzle":"Puzzle"},include_blank:true, class: "form-control" %>
 
     <%= f.label :min_teams %>
     <%= f.number_field :min_teams, value:1, in:1..4, class: "form-control" %>

@@ -3,4 +3,15 @@
 glick:
   name: Michael Glick
   email: michaelglick@gmail.com
-  password_digest: <%User.digest("password!1")%>
+  password_digest: <%=User.digest("password1")%>
+  activated: true
+  activated_at: <%=Time.zone.now%>
+  admin: false
+
+admin:
+  name: Ivan Kelber
+  email: ivankelber@gmail.com
+  password_digest: <%=User.digest("password1")%>
+  activated: true
+  activated_at: <%=Time.zone.now%>
+  admin: true

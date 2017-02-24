@@ -2,12 +2,21 @@
 var ComponentIndex = React.createClass({
   getInitialState: function() {
     return {
-      components: this.props.data
+      components: this.props.data,
+      create_mode: false
     }
   },
   getDefaultProps: function() {
     return {
       components: []
+    }
+  },
+  handleClick: function(event) {
+    event.preventDefault();
+    if(event.target.value=="New Component") {
+      this.setState({create_mode:true})
+    } else {
+      this.setState({create_mode:false})
     }
   },
   addComponent: function (component) {
@@ -23,7 +32,13 @@ var ComponentIndex = React.createClass({
     return (
       <div className="components">
         <h2 className="title">Components</h2>
-        <ComponentForm authenticity_token={this.props.authenticity_token} handleSubmit={this.addComponent}/>
+        <button className="btn btn-primary" onClick={this.handleClick}
+          value={this.state.create_mode?"Cancel":"New Component"}
+          >{this.state.create_mode?"Cancel":"New Component"}</button>
+        <br/>
+        {this.state.create_mode &&<ComponentForm authenticity_token={this.props.authenticity_token}
+        handleSubmit={this.addComponent}/>}
+
         <br/>
         <table className="table table-bordered">
           <thead>

@@ -1,4 +1,4 @@
-var Component = React.createClass({
+var ComponentRow = React.createClass({
   getInitialState: function() {
     return {
       edit: false,

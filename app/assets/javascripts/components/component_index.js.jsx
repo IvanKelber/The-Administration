@@ -36,7 +36,7 @@ var ComponentIndex = React.createClass({
           </thead>
           <tbody>
             {this.state.components.map(function(component) {
-                   return <Component key={component.id} component={component}/>
+                   return <ComponentRow key={component.id} component={component}/>
                   }.bind(this)
                 )
             }

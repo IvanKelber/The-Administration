@@ -1,5 +1,2 @@
-<ul>
-  <%=@components.each do |component| %>
-  <li><%=component.name%></li>
-  <%end%>
-</ul>
+
+<%= react_component 'ComponentIndex', {components:@components}%>

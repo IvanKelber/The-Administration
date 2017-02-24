@@ -6,10 +6,12 @@ class ComponentsController < ApplicationController
     @component = current_user.components.build(component_params)
     if @component.save
       #handle success
-      flash[:success] = "Component '#{@component.name}' created"
-      redirect_to action: "index"
+      # flash[:success] = "Component '#{@component.name}' created"
+      # redirect_to action: "index"
+      render json: @component
+
     else
-      render 'new'
+      # render 'index'
     end
   end
 

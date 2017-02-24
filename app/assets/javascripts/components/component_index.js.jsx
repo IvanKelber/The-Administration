@@ -2,7 +2,7 @@
 var ComponentIndex = React.createClass({
   getInitialState: function() {
     return {
-      components: this.props.components
+      components: this.props.data
     }
   },
   getDefaultProps: function() {
@@ -23,7 +23,7 @@ var ComponentIndex = React.createClass({
     return (
       <div className="components">
         <h2 className="title">Components</h2>
-        <ComponentForm authenticity_token={this.props.authenticity_token}/>
+        <ComponentForm authenticity_token={this.props.authenticity_token} handleSubmit={this.addComponent}/>
         <br/>
         <table className="table table-bordered">
           <thead>
@@ -36,6 +36,7 @@ var ComponentIndex = React.createClass({
           </thead>
           <tbody>
             {this.state.components.map(function(component) {
+                   console.log(component)
                    return <Component key={component.id} component={component}/>
                   }.bind(this)
                 )

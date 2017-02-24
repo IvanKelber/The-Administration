@@ -6,7 +6,7 @@ class Component < ApplicationRecord
   has_many :supplies, through: :component_supply_joins
   $VALID_CATEGORIES = ["Alcohol", "Physical", "Puzzle"]
 
-  validates :name, presence:true,  length:{maximum:50}
+  validates :name, presence:true,  length:{maximum:50}, uniqueness:{case_sensitive:false}
   validates :description, presence:true, length:{maximum:1000}
   validates :category, presence:true, inclusion: {in: $VALID_CATEGORIES}
   validates :min_teams, presence:true, numericality:{only_integer:true,greater_than:0,less_than:5}

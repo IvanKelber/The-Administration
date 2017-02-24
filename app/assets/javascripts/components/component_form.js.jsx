@@ -24,13 +24,10 @@ var ComponentForm = React.createClass({
       data: {component:data},
       dataType:'JSON',
       success: function(data) {
-        console.log("SUCCESS");
         this.props.handleSubmit(data)
         this.setState(this.getInitialState())
       }.bind(this),
       error: function(data) {
-        console.log("error")
-        console.log(data)
         this.setState({errors:data})
       }.bind(this)
     })

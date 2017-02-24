@@ -36,8 +36,11 @@ var ComponentIndex = React.createClass({
           value={this.state.create_mode?"Cancel":"New Component"}
           >{this.state.create_mode?"Cancel":"New Component"}</button>
         <br/>
-        {this.state.create_mode &&<ComponentForm authenticity_token={this.props.authenticity_token}
-        handleSubmit={this.addComponent}/>}
+        <div className="col-md-offset-1">
+
+          {this.state.create_mode &&<ComponentForm authenticity_token={this.props.authenticity_token}
+          handleSubmit={this.addComponent}/>}
+        </div>
 
         <br/>
         <table className="table table-bordered">

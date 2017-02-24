@@ -52,16 +52,16 @@ var ComponentForm = React.createClass({
           <option value="Puzzle">Puzzle</option>
         </select>
 
-        <label htmlFor="min_teams">Min teams</label>
+        <label htmlFor="teams">Teams: </label>
+        <div className="form-inline" id="teams">
          <input value={this.state.min_teams} className="form-control" min="1" max="4"
            type="number" name="min_teams"
            onChange={this.handleChange} />
-
-         <label htmlFor="max_teams">Max teams</label>
+         <strong> <span font-size="25">-</span> </strong>
          <input value={this.state.max_teams} className="form-control" min="1" max="4"
            type="number" name="max_teams"
            onChange={this.handleChange}/>
-
+       </div>
          <label htmlFor="description">Description</label>
          <textarea className="form-control" name="description"
            value={this.state.description} onChange={this.handleChange}>

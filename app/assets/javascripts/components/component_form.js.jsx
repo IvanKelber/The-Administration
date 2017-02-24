@@ -2,10 +2,11 @@ var ComponentForm = React.createClass({
   getInitialState: function() {
     return {
       name: '',
-      category:'',
+      category:'nil',
       min_teams:'1',
       max_teams:'4',
-      description:''
+      description:'',
+      errors:''
     }
   },
   handleChange: function(event){
@@ -16,19 +17,22 @@ var ComponentForm = React.createClass({
   },
   handleSubmit: function(event) {
     event.preventDefault()
-    console.log(this.state)
+    var data = this.state
+    delete data["errors"]
     $.ajax({
       method: 'POST',
-      data: {component:this.state},
+      data: {component:data},
       dataType:'JSON',
       success: function(data) {
         console.log("SUCCESS");
         this.props.handleSubmit(data)
         this.setState(this.getInitialState())
       }.bind(this),
-      error: function() {
-        console.log("ERROR")
-      }
+      error: function(data) {
+        console.log("error")
+        console.log(data)
+        this.setState({errors:data})
+      }.bind(this)
     })
   },
   render: function() {
@@ -36,7 +40,7 @@ var ComponentForm = React.createClass({
       <form onSubmit={this.handleSubmit}>
         <input name="utf8" type="hidden" value="&#x2713;" />
         <input type="hidden" name="authenticity_token" value={this.props.authenticity_token} />
-
+        {this.state.errors && <ErrorBox errors={this.state.errors}/>}
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input type="text" className="form-control"
@@ -57,7 +61,7 @@ var ComponentForm = React.createClass({
          <input value={this.state.min_teams} className="form-control" min="1" max="4"
            type="number" name="min_teams"
            onChange={this.handleChange} />
-         <strong> <span font-size="25">-</span> </strong>
+         <strong> <span fontSize="25">-</span> </strong>
          <input value={this.state.max_teams} className="form-control" min="1" max="4"
            type="number" name="max_teams"
            onChange={this.handleChange}/>

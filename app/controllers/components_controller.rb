@@ -12,7 +12,7 @@ class ComponentsController < ApplicationController
 
     else
       #TODO: handle errors so that the user gets feedback
-      # render json: @component.errors
+      render json: @component.errors.full_messages, status: :error
     end
   end
 

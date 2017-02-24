@@ -21,3 +21,5 @@
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<%= react_component 'ComponentForm', {authenticity_token: form_authenticity_token}%>

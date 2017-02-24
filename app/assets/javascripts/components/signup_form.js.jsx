@@ -26,7 +26,8 @@ var SignupForm = React.createClass({
           <input type="password" className="form-control"
             id='session_password_confirmation'name="user[password_confirmation]"></input>
         </div>
-        <input type="submit" name="commit" value="Create Account" className="btn btn-primary" data-disable-with="Create Account" />
+        <input type="submit" name="commit" value={this.props.button_text}
+          className="btn btn-primary" data-disable-with={this.props.button_text} />
       </form>
     )
   }

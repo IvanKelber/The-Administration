@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-3">
-  <%= form_for(@component) do |f| %>
+  <!-- <%= form_for(@component) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :name %>
@@ -19,7 +19,8 @@
 
 
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-  <% end %>
-</div>
+  <% end %> -->
+  <%= render 'shared/error_messages', object: @component %>
 
-<%= react_component 'ComponentForm', {authenticity_token: form_authenticity_token}%>
+  <%= react_component 'ComponentForm', {authenticity_token: form_authenticity_token}%>
+</div>

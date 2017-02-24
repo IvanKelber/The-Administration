@@ -23,6 +23,8 @@ var ComponentIndex = React.createClass({
     return (
       <div className="components">
         <h2 className="title">Components</h2>
+        <ComponentForm authenticity_token={this.props.authenticity_token}/>
+        <br/>
         <table className="table table-bordered">
           <thead>
             <tr>

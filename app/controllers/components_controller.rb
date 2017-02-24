@@ -11,7 +11,8 @@ class ComponentsController < ApplicationController
       render json: @component
 
     else
-      # render 'index'
+      #TODO: handle errors so that the user gets feedback
+      # render json: @component.errors
     end
   end
 

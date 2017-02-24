@@ -1,2 +1,4 @@
-
+<%if @component%>
+  <%= render 'shared/error_messages', object:@component%>
+<%end%>
 <%= react_component 'ComponentIndex', {data:@components, authenticity_token: form_authenticity_token}%>

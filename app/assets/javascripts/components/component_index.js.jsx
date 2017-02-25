@@ -33,13 +33,13 @@ var ComponentIndex = React.createClass({
       <div className="components">
         <h2 className="title">Components</h2>
         <button className={"btn " + (this.state.create_mode? "btn-danger":"btn-primary")} onClick={this.handleClick}
-          value={this.state.create_mode?"Cancel":"New Component"}
-          >{this.state.create_mode?"Cancel":"New Component"}</button>
+          value={this.state.create_mode?"Cancel":"New Component"}>
+          {this.state.create_mode?"Cancel":"New Component"}
+        </button>
         <br/>
         <div className="col-md-offset-1">
-
-          {this.state.create_mode &&<ComponentForm authenticity_token={this.props.authenticity_token}
-          handleSubmit={this.addComponent}/>}
+          {this.state.create_mode &&
+          <ComponentForm authenticity_token={this.props.authenticity_token} handleSubmit={this.addComponent}/>}
         </div>
 
         <br/>

@@ -62,7 +62,7 @@ var ComponentForm = React.createClass({
          <input value={this.state.max_teams} className="form-control" min="1" max="4"
            type="number" name="max_teams"
            onChange={this.handleChange}/>
-       </div>
+        </div>
          <label htmlFor="description">Description</label>
          <textarea className="form-control" name="description"
            value={this.state.description} onChange={this.handleChange}>

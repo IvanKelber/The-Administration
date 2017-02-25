@@ -42,7 +42,7 @@ module SessionsHelper
   end
 
   def user_admin?
-    current_user.admin
+    current_user && current_user.admin
   end
 
   # Redirects to stored location (or to the default).

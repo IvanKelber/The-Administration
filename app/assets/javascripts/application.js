@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
+//= require ./vendor/react-modal
 //= require components
 //= require_tree .

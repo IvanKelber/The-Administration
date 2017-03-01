@@ -1,10 +1,16 @@
-var ComponentRow = React.createClass({
-  getInitialState: function() {
-    return {
+import React, { PropTypes } from 'react';
+
+
+export default class ComponentRow extends React.Component{
+
+  constructor() {
+    super();
+    this.state = {
       edit: false,
     }
-  },
-  componentRow: function() {
+  };
+
+  componentRow() {
     return(
       <tr>
         <td>{this.props.component.name}</td>
@@ -13,9 +19,9 @@ var ComponentRow = React.createClass({
         <td>{this.props.component.description}</td>
       </tr>
     );
-  },
+  };
 
-  render: function() {
+  render() {
       return this.componentRow();
-  }
-})
+  };
+}

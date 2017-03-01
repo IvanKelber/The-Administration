@@ -13,7 +13,7 @@ gem 'jbuilder',     '2.4.1'
 gem 'react-rails', '~> 1.10'
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
-# gem 'react_on_rail  s', '~> 6'
+gem 'react_on_rails', '~>6'
 
 group :development, :test do
   gem 'sqlite3', '1.3.12'
@@ -42,3 +42,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby

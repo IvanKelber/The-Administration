@@ -1,5 +1,8 @@
-var LoginForm = React.createClass({
-  render: function() {
+import React, { PropTypes } from 'react';
+
+
+export default class LoginForm extends React.Component {
+  render() {
     return (
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
@@ -34,4 +37,8 @@ var LoginForm = React.createClass({
 
     )
   }
-})
+}
+
+// ReactOnRails.register({
+//   LoginForm,
+// });

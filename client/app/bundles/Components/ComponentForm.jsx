@@ -1,6 +1,13 @@
-var ComponentForm = React.createClass({
-  getInitialState: function() {
-    return {
+import React, { PropTypes } from 'react';
+import ComponentRow from './Component'
+import ErrorBox from '../Shared/ErrorBox'
+
+export default class ComponentForm extends React.Component {
+
+
+  constructor() {
+    super();
+    this.state = {
       name: '',
       category:'nil',
       min_teams:'1',
@@ -8,14 +15,29 @@ var ComponentForm = React.createClass({
       description:'',
       errors:''
     }
-  },
-  handleChange: function(event){
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  };
+
+  initialState() {
+    return {
+      name: '',
+      category:'nil',
+      min_teams:'1',
+      max_teams:'4',
+      description:'',
+      errors:''
+    };
+  };
+
+  handleChange(event){
     event.preventDefault();
     var obj = {}
     obj[event.target.name] = event.target.value;
     this.setState(obj);
-  },
-  handleSubmit: function(event) {
+  };
+
+  handleSubmit(event) {
     event.preventDefault()
     var data = this.state
     delete data["errors"]
@@ -25,14 +47,15 @@ var ComponentForm = React.createClass({
       dataType:'JSON',
       success: function(data) {
         this.props.handleSubmit(data)
-        this.setState(this.getInitialState())
+        this.setState(this.initialState())
       }.bind(this),
       error: function(data) {
         this.setState({errors:data})
       }.bind(this)
     })
-  },
-  render: function() {
+  };
+
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <input name="utf8" type="hidden" value="&#x2713;" />
@@ -73,4 +96,4 @@ var ComponentForm = React.createClass({
       </form>
     )
   }
-})
+}

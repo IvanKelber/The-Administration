@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactOnRails from 'react-on-rails';
-
 
 
 export default class LoginForm extends React.Component {

@@ -1,5 +1,7 @@
-var SignupForm = React.createClass({
-  render: function() {
+import React, { PropTypes } from 'react';
+
+export default class SignupForm extends React.Component {
+  render() {
     return (
       <form action="/users" method="post">
         <input name="utf8" type="hidden" value="&#x2713;" />
@@ -31,4 +33,4 @@ var SignupForm = React.createClass({
       </form>
     )
   }
-})
+}

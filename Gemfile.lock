@@ -44,10 +44,6 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.6)
       execjs
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
@@ -168,13 +164,6 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    react-rails (1.10.0)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     react_on_rails (6.7.1)
       addressable
       connection_pool
@@ -243,7 +232,6 @@ DEPENDENCIES
   puma (~> 3.7.0)
   rails (= 5.0.1)
   rails-controller-testing (= 0.1.1)
-  react-rails (~> 1.10)
   react_on_rails (~> 6)
   sass-rails (= 5.0.6)
   spring (= 1.7.2)

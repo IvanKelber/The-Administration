@@ -7,8 +7,6 @@ export default class ComponentIndex extends React.Component {
 
   constructor(props,_railsContext) {
     super(props)
-    console.log("inside constructor: ")
-    console.log(props)
     this.state = {
       components: this.props.data,
       create_mode: false

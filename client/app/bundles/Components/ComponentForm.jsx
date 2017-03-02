@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-import ComponentRow from './Component'
-import ErrorBox from '../Shared/ErrorBox'
+import {WithContext as ReactTags} from 'react-tag-input';
+import ComponentRow from './Component';
+import ErrorBox from '../Shared/ErrorBox';
 
 export default class ComponentForm extends React.Component {
 
@@ -90,7 +91,6 @@ export default class ComponentForm extends React.Component {
          <textarea className="form-control" name="description"
            value={this.state.description} onChange={this.handleChange}>
          </textarea>
-
         <input type="submit" name="commit" value="Create Component"
           className="btn btn-primary" />
       </form>

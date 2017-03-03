@@ -3,15 +3,25 @@ class ComponentsController < ApplicationController
 
 
   def create
-    @component = current_user.components.build(component_params)
+    permitted_params = component_params
+    permitted_params[:keywords] = []
+    permitted_params[:words].each do |w|
+      keyword = Keyword.find_or_create_by(word: w[:text])
+      permitted_params[:keywords].push(keyword)
+    end
+    permitted_params.except!(:words)
+    @component = current_user.components.build(permitted_params)
+    # puts "KEYWORDS: "
     if @component.save
+      # @component.keywords.each do |keyword|
+      #   keyword.components<<(@component)
+      # end
       #handle success
       # flash[:success] = "Component '#{@component.name}' created"
       # redirect_to action: "index"
       render json: @component
 
     else
-      #TODO: handle errors so that the user gets feedback
       render json: @component.errors.full_messages, status: :error
     end
   end
@@ -40,7 +50,20 @@ class ComponentsController < ApplicationController
   private
 
     def component_params
-      params.require(:component).permit(:name,:description,:min_teams,:max_teams,:category)
+      # puts "keywords:"
+      words = []
+      if !params[:component][:words].nil?
+        params[:component][:words].each do |number,value|
+          # print number, value[:text], "\n"
+          # print value.nil?.to_s
+          words.push(value)
+        end
+        params[:component][:words] = words
+      end
+      ret = params.require(:component).permit(:name,:description,:min_teams,:max_teams,:category,:words => [:id, :text])
+      # puts "RETURN VALUE: "
+      # puts ret[:words]
+      return ret
     end
 
 end

@@ -15,7 +15,7 @@ export default class ComponentForm extends React.Component {
       max_teams:'4',
       description:'',
       errors:'',
-      tags: []
+      words: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,28 +34,29 @@ export default class ComponentForm extends React.Component {
       min_teams:'1',
       max_teams:'4',
       description:'',
-      errors:''
+      errors:'',
+      words:[]
     };
   };
 
   handleDeleteTag(i) {
-    var tags = this.state.tags;
+    var tags = this.state.words;
     tags.splice(i,1);
-    this.setState({tags:tags})
+    this.setState({words:tags})
   };
 
   handleAddTag(tag) {
-    var tags = this.state.tags;
+    var tags = this.state.words;
     tags.push({
       id: tags.length + 1,
       text:tag
     });
-    this.setState({tags:tags})
+    this.setState({words:tags})
   };
 
   handleChangeTag(event) {
-    event.preventDefault();
-    console.log(event.target.value)
+    // console.log(event.target.value)
+    console.log(event);
   };
 
 
@@ -69,12 +70,16 @@ export default class ComponentForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    var data = this.state
-    delete data["errors"]
-    delete data["tags"]
+    var data = this.state;
+    var words = this.state.words;
+    // delete data["words"];
+    delete data["errors"];
+
     $.ajax({
       method: 'POST',
-      data: {component:data},
+      data: {component:data,
+              // words:JSON.stringify(words)
+            },
       dataType:'JSON',
       success: function(data) {
         this.props.handleSubmit(data)
@@ -121,14 +126,17 @@ export default class ComponentForm extends React.Component {
          <textarea className="form-control" name="description"
            value={this.state.description} onChange={this.handleChange}>
          </textarea>
-         <ReactTags autocomplete={true}
-                    tags={this.state.tags}
-                    suggestions={this.props.suggestions}
-                    handleDelete={this.handleDeleteTag}
-                    handleChange={this.handleChangeTag}
-                    handleAddition={this.handleAddTag}
-                    />
-
+         <label htmlFor="tags">Tags</label>
+         <div name="tags">
+           <ReactTags
+                      autocomplete={true}
+                      tags={this.state.words}
+                      suggestions={this.props.suggestions}
+                      handleDelete={this.handleDeleteTag}
+                      handleChange={this.handleChangeTag}
+                      handleAddition={this.handleAddTag}
+                      />
+          </div>
         <input type="submit" name="commit" value="Create Component"
           className="btn btn-primary" />
       </form>

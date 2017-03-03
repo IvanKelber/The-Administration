@@ -27,6 +27,7 @@ class ComponentsController < ApplicationController
 
   def index
     @components = Component.all
+    @suggestions = Keyword.all
   end
 
   def show

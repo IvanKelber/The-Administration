@@ -7,7 +7,15 @@ export default class ComponentIndex extends React.Component {
 
   constructor(props,_railsContext) {
     super(props)
+    var suggestions = [];
+    this.props.suggestions.forEach(function(suggestion) {
+        suggestions.push(suggestion.word);
+    });
+
+
+
     this.state = {
+      suggestions: suggestions,
       components: this.props.data,
       create_mode: false
     }
@@ -16,6 +24,7 @@ export default class ComponentIndex extends React.Component {
     this.addComponent = this.addComponent.bind(this);
     this.deleteComponent = this.deleteComponent.bind(this);
   };
+
 
   handleClick() {
     // event.preventDefault();
@@ -54,7 +63,8 @@ export default class ComponentIndex extends React.Component {
         <br/>
         <div className="col-md-offset-1">
           {this.state.create_mode &&
-          <ComponentForm authenticity_token={this.props.authenticity_token} handleSubmit={this.addComponent}/>}
+          <ComponentForm authenticity_token={this.props.authenticity_token} suggestions={this.state.suggestions}
+            handleSubmit={this.addComponent}/>}
         </div>
 
         <br/>

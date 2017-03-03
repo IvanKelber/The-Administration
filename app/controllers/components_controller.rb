@@ -5,9 +5,11 @@ class ComponentsController < ApplicationController
   def create
     permitted_params = component_params
     permitted_params[:keywords] = []
-    permitted_params[:words].each do |w|
-      keyword = Keyword.find_or_create_by(word: w[:text])
-      permitted_params[:keywords].push(keyword)
+    if !permitted_params[:words].nil?
+      permitted_params[:words].each do |w|
+        keyword = Keyword.find_or_create_by(word: w[:text])
+        permitted_params[:keywords].push(keyword)
+      end
     end
     permitted_params.except!(:words)
     @component = current_user.components.build(permitted_params)

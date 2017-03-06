@@ -56,7 +56,7 @@ export default class ComponentForm extends React.Component {
 
   handleChangeTag(event) {
     // console.log(event.target.value)
-    console.log(event);
+    // console.log(event);
   };
 
 

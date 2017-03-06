@@ -15,12 +15,7 @@ class ComponentsController < ApplicationController
     @component = current_user.components.build(permitted_params)
     # puts "KEYWORDS: "
     if @component.save
-      # @component.keywords.each do |keyword|
-      #   keyword.components<<(@component)
-      # end
       #handle success
-      # flash[:success] = "Component '#{@component.name}' created"
-      # redirect_to action: "index"
       render json: @component
 
     else
@@ -51,20 +46,19 @@ class ComponentsController < ApplicationController
 
   private
 
+    #This method loops through each keyword and formats it properly.
+    # TODO: format this properly when passing the JSON in the first place, ya dingus
     def component_params
-      # puts "keywords:"
       words = []
       if !params[:component][:words].nil?
         params[:component][:words].each do |number,value|
-          # print number, value[:text], "\n"
-          # print value.nil?.to_s
+
           words.push(value)
         end
         params[:component][:words] = words
       end
       ret = params.require(:component).permit(:name,:description,:min_teams,:max_teams,:category,:words => [:id, :text])
-      # puts "RETURN VALUE: "
-      # puts ret[:words]
+
       return ret
     end
 

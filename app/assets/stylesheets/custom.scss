@@ -115,7 +115,6 @@ div.ReactTags__selected span.ReactTags__tag {
   display: inline-block;
   padding: 10px 10px;
   margin: 0 5px;
-  cursor: move;
   border-radius: 2px;
 }
 div.ReactTags__selected a.ReactTags__remove {
@@ -150,4 +149,15 @@ div.ReactTags__suggestions li mark {
 div.ReactTags__suggestions ul li.active {
     background: #b7cfe0;
     cursor: pointer;
+}
+
+span.component_tag {
+  border: 1px solid #ccc;
+  background: #eee;
+  margin-right:5px;
+  padding: 1px 3px;
+  border-radius: 5px;
+  &:hover {
+    background: #ddd;
+  }
 }

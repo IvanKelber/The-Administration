@@ -5,7 +5,11 @@ export default class TagBox extends React.Component{
 
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
+  };
 
+  handleClick(event) {
+    console.log(event);
   };
 
   capitalizeFirstLetter(string) {
@@ -14,7 +18,7 @@ export default class TagBox extends React.Component{
 
   render() {
       return (
-        <span className="component_tag">
+        <span className="component_tag" onClick={this.handleClick}>
           {this.capitalizeFirstLetter(this.props.tag.word)}
         </span>
       )

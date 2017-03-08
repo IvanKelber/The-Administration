@@ -1,7 +1,8 @@
 class Component < ApplicationRecord
   belongs_to :user
-  has_many :component_keyword_joins
+  has_many :component_keyword_joins, dependent: :destroy
   has_many :keywords, through: :component_keyword_joins
+  
   has_many :component_supply_joins
   has_many :supplies, through: :component_supply_joins
   $VALID_CATEGORIES = ["Alcohol", "Physical", "Puzzle"]

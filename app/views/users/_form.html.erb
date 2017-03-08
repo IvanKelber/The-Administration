@@ -1,4 +1,6 @@
 <div class="col-md-6 col-md-offset-3">
-  <%= render 'shared/error_messages', object: @user %>
+  <div class="field_with_errors">
+    <%= render 'shared/error_messages', object: @user %>
+  </div>
   <%= react_component('SignupForm', props: {authenticity_token: form_authenticity_token, button_text: button_text, url: post_url},prerender:false)%>
 </div>

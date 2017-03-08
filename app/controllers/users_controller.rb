@@ -33,12 +33,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
-    if !@user.authenticate(user_params[:current_password])
-      @user.errors.add(:base,:blank,message: "Current password is incorrect")
-      render 'edit'
-      return
-    end
+    puts "UPDATING"
+    puts @user.name
     if @user.update_attributes(user_params)
       flash[:success] = "Account information updated"
       redirect_to user_url(@user)
@@ -58,7 +54,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :current_password, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
 
     end
 

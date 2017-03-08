@@ -1,9 +1,20 @@
 import React, { PropTypes } from 'react';
 
 export default class SignupForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+  }
+
   render() {
+
     return (
-      <form action="/users" method="post">
+      <form action={this.props.url} method='post'>
+        {this.props.url != "/users" &&
+           <input name="_method" type="hidden" value="patch"/>
+         }
+
         <input name="utf8" type="hidden" value="&#x2713;" />
         <input type="hidden" name="authenticity_token" value={this.props.authenticity_token} />
 

@@ -33,8 +33,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    puts "UPDATING"
-    puts @user.name
     if @user.update_attributes(user_params)
       flash[:success] = "Account information updated"
       redirect_to user_url(@user)

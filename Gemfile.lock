@@ -71,7 +71,7 @@ GEM
     execjs (2.7.0)
     faker (1.6.6)
       i18n (~> 0.5)
-    ffi (1.9.17)
+    ffi (1.9.18)
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -175,7 +175,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    react_on_rails (6.7.1)
+    react_on_rails (6.8.0)
       addressable
       connection_pool
       execjs (~> 2.5)

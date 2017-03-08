@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import TagBox from './Tag';
 
 export default class ComponentRow extends React.Component{
 
@@ -18,7 +18,12 @@ export default class ComponentRow extends React.Component{
         <td>{this.props.component.category}</td>
         <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
         <td>{this.props.component.description}</td>
-        <td>{this.props.component.tags[0].word}</td>
+        <td>
+          {this.props.component.tags.map(function(tag) {
+            return <TagBox key={tag.id} tag={tag}/>
+          })}
+
+        </td>
       </tr>
     );
   };

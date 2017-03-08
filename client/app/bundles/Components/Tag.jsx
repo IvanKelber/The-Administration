@@ -9,7 +9,8 @@ export default class TagBox extends React.Component{
   };
 
   handleClick(event) {
-    console.log(event);
+    console.log(this.props.tag.word);
+    //TODO: FILTER Components page depending on tag selected.
   };
 
   capitalizeFirstLetter(string) {

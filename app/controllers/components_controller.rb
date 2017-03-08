@@ -5,18 +5,20 @@ class ComponentsController < ApplicationController
   def create
     permitted_params = component_params
     permitted_params[:keywords] = []
-    if !permitted_params[:words].nil?
-      permitted_params[:words].each do |w|
+    if !permitted_params[:tags].nil?
+      permitted_params[:tags].each do |w|
         keyword = Keyword.find_or_create_by(word: w[:text])
         permitted_params[:keywords].push(keyword)
       end
     end
-    permitted_params.except!(:words)
+    permitted_params.except!(:tags)
     @component = current_user.components.build(permitted_params)
     # puts "KEYWORDS: "
     if @component.save
       #handle success
-      render json: @component
+      obj = @component.as_json
+      obj[:tags] = @component.keywords #hacky way of combining keyword references into component creation
+      render json: obj
 
     else
       render json: @component.errors.full_messages, status: :error
@@ -34,6 +36,10 @@ class ComponentsController < ApplicationController
 
   def index
     @components = Component.all
+    @tags = []
+    @components.each do |c|
+      @tags.push(c.keywords)
+    end
     @suggestions = Keyword.all
   end
 
@@ -49,15 +55,15 @@ class ComponentsController < ApplicationController
     #This method loops through each keyword and formats it properly.
     # TODO: format this properly when passing the JSON in the first place, ya dingus
     def component_params
-      words = []
-      if !params[:component][:words].nil?
-        params[:component][:words].each do |number,value|
+      tags = []
+      if !params[:component][:tags].nil?
+        params[:component][:tags].each do |number,value|
 
-          words.push(value)
+          tags.push(value)
         end
-        params[:component][:words] = words
+        params[:component][:tags] = tags
       end
-      ret = params.require(:component).permit(:name,:description,:min_teams,:max_teams,:category,:words => [:id, :text])
+      ret = params.require(:component).permit(:name,:description,:min_teams,:max_teams,:category,:tags => [:id, :text])
 
       return ret
     end

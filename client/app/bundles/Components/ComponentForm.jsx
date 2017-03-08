@@ -35,7 +35,7 @@ export default class ComponentForm extends React.Component {
       max_teams:'4',
       description:'',
       errors:'',
-      words:[]
+      tags:[]
     };
   };
 
@@ -51,7 +51,7 @@ export default class ComponentForm extends React.Component {
       id: tags.length + 1,
       text:tag
     });
-    this.setState({words:tags})
+    this.setState({tags:tags})
   };
 
   handleChangeTag(event) {

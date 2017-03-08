@@ -12,14 +12,18 @@ export default class ComponentIndex extends React.Component {
         suggestions.push(suggestion.word);
     });
 
-
+    var components = this.props.data;
+    console.log(this.props.tags.length);
+    for(let [index,value] of this.props.tags.entries()) {
+      components[index]["tags"] = value;
+    }
 
     this.state = {
       suggestions: suggestions,
       components: this.props.data,
+      tags: this.props.tags,
       create_mode: false
     }
-
     this.handleClick = this.handleClick.bind(this);
     this.addComponent = this.addComponent.bind(this);
     this.deleteComponent = this.deleteComponent.bind(this);
@@ -75,6 +79,7 @@ export default class ComponentIndex extends React.Component {
               <th>Category</th>
               <th>Team Range</th>
               <th>Description</th>
+              <th>Tags</th>
             </tr>
           </thead>
           <tbody>

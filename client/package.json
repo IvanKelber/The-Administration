@@ -29,7 +29,9 @@
     "imports-loader": "^0.7.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-modal": "^1.7.1",
     "react-on-rails": "6.7.1",
+    "react-overlays": "^0.6.12",
     "react-tag-input": "^4.6.2",
     "react-tags": "^0.2.2",
     "webpack": "^1.14.0"

@@ -1,6 +1,39 @@
 import React, { PropTypes } from 'react';
 import ComponentForm from './ComponentForm';
-import ComponentRow from "./Component";
+import {ComponentRow,ComponentBox}  from "./Component";
+import Modal from "react-overlays/lib/Modal";
+
+
+const modalStyle = {
+  position: 'fixed',
+  zIndex: 1040,
+  top: 0, bottom: 0, left: 0, right: 0
+};
+
+const backdropStyle = {
+  ...modalStyle,
+  zIndex: 'auto',
+  backgroundColor: '#000',
+  opacity: 0.5
+};
+
+const dialogStyle = function() {
+  // we use some psuedo random coords so nested modals
+  // don't sit right on top of each other.
+  let top = 50
+  let left = 50
+
+  return {
+    position: 'absolute',
+    width: 400,
+    top: top + '%', left: left + '%',
+    transform: `translate(-${top}%, -${left}%)`,
+    border: '1px solid #e5e5e5',
+    backgroundColor: 'white',
+    boxShadow: '0 5px 15px rgba(0,0,0,.5)',
+    padding: 20
+  };
+};
 
 export default class ComponentIndex extends React.Component {
   // static defaultProps = {components:[]};
@@ -22,11 +55,16 @@ export default class ComponentIndex extends React.Component {
       suggestions: suggestions,
       components: this.props.data,
       tags: this.props.tags,
-      create_mode: false
+      create_mode: false,
+      modal_open: false
     }
     this.handleClick = this.handleClick.bind(this);
     this.addComponent = this.addComponent.bind(this);
     this.deleteComponent = this.deleteComponent.bind(this);
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
   };
 
 
@@ -39,6 +77,14 @@ export default class ComponentIndex extends React.Component {
     } else {
       this.setState({create_mode:true})
     }
+  };
+
+  openModal(component) {
+    this.setState({modal_open:true});
+  };
+
+  closeModal() {
+    this.setState({modal_open:false});
   };
 
   addComponent(component) {
@@ -62,14 +108,25 @@ export default class ComponentIndex extends React.Component {
         <button className={"btn " + (this.state.create_mode? "btn-danger":"btn-primary")} onClick={this.handleClick}
           value={this.state.create_mode?"Cancel":"New Component"}>
           {this.state.create_mode?"Cancel":"New Component"}
-
         </button>
+
         <br/>
         <div className="col-md-offset-1">
           {this.state.create_mode &&
           <ComponentForm authenticity_token={this.props.authenticity_token} suggestions={this.state.suggestions}
             handleSubmit={this.addComponent}/>}
         </div>
+
+        <Modal
+          style={modalStyle}
+          backdropStyle={backdropStyle}
+
+          show={this.state.modal_open}
+          onHide={this.closeModal}>
+          <div style={dialogStyle()}>
+            <ComponentBox/>
+          </div>
+        </Modal>
 
         <br/>
         <table className="table table-bordered">
@@ -82,9 +139,9 @@ export default class ComponentIndex extends React.Component {
               <th>Tags</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="component-table">
             {this.state.components.map(function(component) {
-                   return <ComponentRow key={component.id} component={component}/>
+                   return <ComponentRow key={component.id} component={component} handleClick={this.openModal}/>
                   }.bind(this)
                 )
             }

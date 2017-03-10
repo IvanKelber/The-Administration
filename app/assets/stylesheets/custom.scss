@@ -162,3 +162,9 @@ span.component_tag {
     cursor:pointer;
   }
 }
+
+tr.component-row {
+  &:hover {
+    background: lightblue;
+  }
+}

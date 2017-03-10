@@ -5,6 +5,7 @@ const buttonStyle = {
   marginRight: 5 +'px'
 }
 
+
 export class ComponentRow extends React.Component{
 
   constructor(props) {
@@ -49,37 +50,53 @@ export class ComponentBox extends React.Component {
   render() {
     return (
       <div>
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Description</th>
-              <th>Teams</th>
-              <th>Tags</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{this.props.component.name}</td>
-              <td>{this.props.component.category}</td>
-              <td>{this.props.component.description}</td>
-                <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
-                <td>
-                  {this.props.component.tags.map(function(tag) {
-                    return <TagBox key={tag.id} tag={tag}/>
-                  })}
-                </td>
-
-              <td>
-                <button style={buttonStyle} className="btn btn-info">Edit</button>
-                <button className="btn btn-danger">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <header>
+            <div className="component-box">
+              <h2>{this.props.component.name}</h2>
+              <h3>{this.props.component.category}</h3>
+              <span className="edit-button glyphicon glyphicon-pencil"></span>
+            </div>
+        </header>
+        <div >
+          {this.props.component.tags.map(function(tag) {
+                   return <TagBox key={tag.id} tag={tag}/>
+                 })}
+        </div>
+        <div><h6>Another</h6></div>
       </div>
+
+      // <div>
+      //   <table className="table table-bordered">
+      //     <thead>
+      //       <tr>
+      //         <th>Name</th>
+      //         <th>Category</th>
+      //         <th>Description</th>
+      //         <th>Teams</th>
+      //         <th>Tags</th>
+      //         <th>Actions</th>
+      //       </tr>
+      //     </thead>
+      //     <tbody>
+      //       <tr>
+      //         <td>{this.props.component.name}</td>
+      //         <td>{this.props.component.category}</td>
+      //         <td>{this.props.component.description}</td>
+      //           <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
+      //           <td>
+      //             {this.props.component.tags.map(function(tag) {
+      //               return <TagBox key={tag.id} tag={tag}/>
+      //             })}
+      //           </td>
+      //
+      //         <td>
+      //           <button style={buttonStyle} className="btn btn-info">Edit</button>
+      //           <button className="btn btn-danger">Delete</button>
+      //         </td>
+      //       </tr>
+      //     </tbody>
+      //   </table>
+      // </div>
     )
   }
 

@@ -13,7 +13,7 @@ const modalStyle = {
 const backdropStyle = {
   ...modalStyle,
   zIndex: 'auto',
-  backgroundColor: '#000',
+  backgroundColor: 'lightblue',
   opacity: 0.5
 };
 
@@ -25,7 +25,8 @@ const dialogStyle = function() {
 
   return {
     position: 'absolute',
-    width: 'auto',
+    width: '30%',
+    height: '30%',
     top: top + '%', left: left + '%',
     transform: `translate(-${top}%, -${left}%)`,
     border: '1px solid #e5e5e5',

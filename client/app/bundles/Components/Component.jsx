@@ -26,7 +26,7 @@ export class ComponentRow extends React.Component{
         <td>{this.props.component.name}</td>
         <td>{this.props.component.category}</td>
         <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
-        <td>
+        <td className="tag-container">
           {this.props.component.tags.map(function(tag) {
             return <TagBox key={tag.id} tag={tag}/>
           })}
@@ -49,20 +49,25 @@ export class ComponentBox extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="component-box">
         <header>
-            <div className="component-box">
+            <div className="component-header">
               <h2>{this.props.component.name}</h2>
               <h3>{this.props.component.category}</h3>
               <span className="edit-button glyphicon glyphicon-pencil"></span>
             </div>
         </header>
-        <div >
+        <div className="tag-container">
           {this.props.component.tags.map(function(tag) {
                    return <TagBox key={tag.id} tag={tag}/>
                  })}
         </div>
-        <div><h6>Another</h6></div>
+        <div>
+          <h5>For {this.props.component.min_teams} to {this.props.component.max_teams} teams</h5>
+        </div>
+        <div className="scrolling-description">
+          <p>{this.props.component.description}</p>
+        </div>
       </div>
 
       // <div>

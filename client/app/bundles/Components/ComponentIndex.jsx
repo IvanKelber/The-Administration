@@ -5,7 +5,7 @@ import Modal from "react-overlays/lib/Modal";
 
 
 const modalStyle = {
-  position: 'fixed',
+  position: 'absolute',
   zIndex: 1040,
   top: 0, bottom: 0, left: 0, right: 0,
 };
@@ -25,8 +25,8 @@ const dialogStyle = function() {
 
   return {
     position: 'absolute',
-    width: '30%',
-    height: '30%',
+    width: '500px',
+    height: '400px',
     top: top + '%', left: left + '%',
     transform: `translate(-${top}%, -${left}%)`,
     border: '1px solid #e5e5e5',
@@ -137,7 +137,7 @@ export default class ComponentIndex extends React.Component {
         </Modal>
 
         <br/>
-        <table className="table table-bordered">
+        <table className="col-md-6 table table-bordered">
           <thead>
             <tr>
               <th>Name</th>

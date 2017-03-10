@@ -21,7 +21,6 @@ export class ComponentRow extends React.Component{
         <td>{this.props.component.name}</td>
         <td>{this.props.component.category}</td>
         <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
-        <td>{this.props.component.description}</td>
         <td>
           {this.props.component.tags.map(function(tag) {
             return <TagBox key={tag.id} tag={tag}/>
@@ -46,7 +45,29 @@ export class ComponentBox extends React.Component {
   render() {
     return (
       <div>
-        <h1>COMPONENT BOX</h1>
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Teams</th>
+              <th>Tags</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chug</td>
+              <td>categories and stuff</td>
+              <td>beer and stuff</td>
+              <td>teams and stuff</td>
+              <td>tags and stuff</td>
+
+              <td><button className="btn btn-small">Edit</button> <button className="btn btn-danger">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }

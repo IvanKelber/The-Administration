@@ -7,7 +7,7 @@ import Modal from "react-overlays/lib/Modal";
 const modalStyle = {
   position: 'fixed',
   zIndex: 1040,
-  top: 0, bottom: 0, left: 0, right: 0
+  top: 0, bottom: 0, left: 0, right: 0,
 };
 
 const backdropStyle = {
@@ -25,7 +25,7 @@ const dialogStyle = function() {
 
   return {
     position: 'absolute',
-    width: 400,
+    width: 'auto',
     top: top + '%', left: left + '%',
     transform: `translate(-${top}%, -${left}%)`,
     border: '1px solid #e5e5e5',
@@ -135,7 +135,6 @@ export default class ComponentIndex extends React.Component {
               <th>Name</th>
               <th>Category</th>
               <th>Team Range</th>
-              <th>Description</th>
               <th>Tags</th>
             </tr>
           </thead>

@@ -56,7 +56,8 @@ export default class ComponentIndex extends React.Component {
       components: this.props.data,
       tags: this.props.tags,
       create_mode: false,
-      modal_open: false
+      modal_open: false,
+      current_component: null
     }
     this.handleClick = this.handleClick.bind(this);
     this.addComponent = this.addComponent.bind(this);
@@ -80,11 +81,17 @@ export default class ComponentIndex extends React.Component {
   };
 
   openModal(component) {
-    this.setState({modal_open:true});
+    this.setState({
+        modal_open:true,
+        current_component:component
+    });
   };
 
   closeModal() {
-    this.setState({modal_open:false});
+    this.setState({
+      modal_open:false,
+      current_component: null
+    });
   };
 
   addComponent(component) {
@@ -120,11 +127,11 @@ export default class ComponentIndex extends React.Component {
         <Modal
           style={modalStyle}
           backdropStyle={backdropStyle}
-
+          autoFocus={false}
           show={this.state.modal_open}
           onHide={this.closeModal}>
           <div style={dialogStyle()}>
-            <ComponentBox/>
+            <ComponentBox component={this.state.current_component}/>
           </div>
         </Modal>
 

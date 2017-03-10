@@ -1,6 +1,10 @@
 import React, { PropTypes } from 'react';
 import TagBox from './Tag';
 
+const buttonStyle = {
+  marginRight: 5 +'px'
+}
+
 export class ComponentRow extends React.Component{
 
   constructor(props) {
@@ -58,13 +62,20 @@ export class ComponentBox extends React.Component {
           </thead>
           <tbody>
             <tr>
-              <td>Chug</td>
-              <td>categories and stuff</td>
-              <td>beer and stuff</td>
-              <td>teams and stuff</td>
-              <td>tags and stuff</td>
+              <td>{this.props.component.name}</td>
+              <td>{this.props.component.category}</td>
+              <td>{this.props.component.description}</td>
+                <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
+                <td>
+                  {this.props.component.tags.map(function(tag) {
+                    return <TagBox key={tag.id} tag={tag}/>
+                  })}
+                </td>
 
-              <td><button className="btn btn-small">Edit</button> <button className="btn btn-danger">Delete</button></td>
+              <td>
+                <button style={buttonStyle} className="btn btn-info">Edit</button>
+                <button className="btn btn-danger">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>

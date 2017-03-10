@@ -68,6 +68,10 @@ export class ComponentBox extends React.Component {
         <div className="scrolling-description">
           <p>{this.props.component.description}</p>
         </div>
+        <div className="button-container">
+          <button className="btn btn">Cancel</button>
+          <button className="btn btn-danger">Delete Component</button>
+        </div>
       </div>
 
       // <div>

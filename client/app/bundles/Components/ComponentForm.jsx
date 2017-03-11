@@ -46,12 +46,21 @@ export default class ComponentForm extends React.Component {
   };
 
   handleAddTag(tag) {
+    tag = tag.toLowerCase();
     var tags = this.state.words;
-    tags.push({
-      id: tags.length + 1,
-      text:tag
-    });
-    this.setState({tags:tags})
+    let results = tags.filter(function(t) {
+      return t.text == tag;
+    })
+    console.log(results)
+    if(results.length > 0) {
+      this.setState({errors:{responseJSON:['Tag already exists']}})
+    } else {
+      tags.push({
+        id: tags.length + 1,
+        text:tag
+      });
+      this.setState({tags:tags})
+    }
   };
 
   handleChangeTag(event) {

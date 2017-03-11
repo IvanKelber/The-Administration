@@ -13,6 +13,8 @@ class Component < ApplicationRecord
   validates :max_teams, presence:true, numericality:{only_integer:true,greater_than:0,less_than:5}
   validate :min_less_than_max
   validate :user_is_admin
+  validate :keywords_unique
+
 
   private
 
@@ -27,6 +29,12 @@ class Component < ApplicationRecord
     def user_is_admin
       if(self.user && !self.user.admin?)
         errors.add(:user,"must be an admin")
+      end
+    end
+
+    def keywords_unique
+      if self.keywords != self.keywords.uniq
+        errors.add(:keywords, "must be unique")
       end
     end
 end

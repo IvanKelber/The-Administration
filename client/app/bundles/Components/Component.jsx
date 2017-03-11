@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import TagBox from './Tag';
+import Transition from "react-overlays/lib/Transition"
 
 const buttonStyle = {
   marginRight: 5 +'px'
@@ -59,6 +60,7 @@ export class ComponentBox extends React.Component {
         </header>
         <div className="tag-container">
           {this.props.component.tags.map(function(tag) {
+                   console.log(tag)
                    return <TagBox key={tag.id} tag={tag}/>
                  })}
         </div>
@@ -68,7 +70,7 @@ export class ComponentBox extends React.Component {
         <div className="scrolling-description">
           <p>{this.props.component.description}</p>
         </div>
-        <div className="button-container">
+        <div>
           <button className="btn btn">Cancel</button>
           <button className="btn btn-danger">Delete Component</button>
         </div>

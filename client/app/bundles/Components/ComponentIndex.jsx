@@ -5,7 +5,7 @@ import Modal from "react-overlays/lib/Modal";
 
 
 const modalStyle = {
-  position: 'absolute',
+  position: 'fixed',
   zIndex: 1040,
   top: 0, bottom: 0, left: 0, right: 0,
 };

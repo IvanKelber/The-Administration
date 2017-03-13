@@ -188,13 +188,24 @@ div.component-box {
   }
   span.edit-button {
     float:right;
-    font-size: 18px;
-    line-height: 1.33;
+    font-size: 30px;
+    line-height: 1;
+    &:hover {
+      opacity: .5;
+    }
+  }
+  span.edit-clicked {
+    color: green;
+    float:right;
+    font-size: 30px;
+    line-height: 1;
     &:hover {
       opacity: .5;
     }
   }
 }
+
+
 
 div.scrolling-description {
   border: 1px solid #ddd;
@@ -207,4 +218,31 @@ div.scrolling-description {
 
 .tag-container {
   overflow-x: scroll;
+}
+
+.button-transition-enter {
+  opacity: 0.01;
+}
+
+.button-transition-enter.button-transition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.button-transition-leave {
+  opacity: 1;
+}
+
+.button-transition-leave.button-transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.button-transition-appear {
+  opacity: 0.01;
+  transition: opacity 3000ms ease-in;
+}
+
+.button-transition-appear.button-transition-appear-active {
+  opacity: 1;
 }

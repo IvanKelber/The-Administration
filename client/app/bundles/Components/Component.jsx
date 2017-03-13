@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import TagBox from './Tag';
-import Transition from "react-overlays/lib/Transition"
+import ButtonContainer from './ButtonContainer';
+
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
+
 
 const buttonStyle = {
   marginRight: 5 +'px'
@@ -46,16 +49,28 @@ export class ComponentBox extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      edit_mode: false
+    }
+    this.toggleEditMode = this.toggleEditMode.bind(this);
+  };
+
+  toggleEditMode() {
+    this.setState({edit_mode: !this.state.edit_mode});
   };
 
   render() {
+    var edit_icon_class = "edit-button glyphicon glyphicon-pencil"
+    if(this.state.edit_mode) {
+      edit_icon_class = "edit-clicked glyphicon glyphicon-ok"
+    }
     return (
       <div className="component-box">
         <header>
             <div className="component-header">
               <h2>{this.props.component.name}</h2>
               <h3>{this.props.component.category}</h3>
-              <span className="edit-button glyphicon glyphicon-pencil"></span>
+              <span className={edit_icon_class} onClick={this.toggleEditMode}></span>
             </div>
         </header>
         <div className="tag-container">
@@ -70,44 +85,16 @@ export class ComponentBox extends React.Component {
         <div className="scrolling-description">
           <p>{this.props.component.description}</p>
         </div>
-        <div>
-          <button className="btn btn">Cancel</button>
-          <button className="btn btn-danger">Delete Component</button>
-        </div>
+        <ReactCSSTransitionGroup
+          transitionName="button-transition"
+          transitionAppear={this.state.edit_mode}
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+          transitionAppearTimeout={400}>
+            {this.state.edit_mode && <ButtonContainer/>}
+        </ReactCSSTransitionGroup>
       </div>
 
-      // <div>
-      //   <table className="table table-bordered">
-      //     <thead>
-      //       <tr>
-      //         <th>Name</th>
-      //         <th>Category</th>
-      //         <th>Description</th>
-      //         <th>Teams</th>
-      //         <th>Tags</th>
-      //         <th>Actions</th>
-      //       </tr>
-      //     </thead>
-      //     <tbody>
-      //       <tr>
-      //         <td>{this.props.component.name}</td>
-      //         <td>{this.props.component.category}</td>
-      //         <td>{this.props.component.description}</td>
-      //           <td>{this.props.component.min_teams} - {this.props.component.max_teams}</td>
-      //           <td>
-      //             {this.props.component.tags.map(function(tag) {
-      //               return <TagBox key={tag.id} tag={tag}/>
-      //             })}
-      //           </td>
-      //
-      //         <td>
-      //           <button style={buttonStyle} className="btn btn-info">Edit</button>
-      //           <button className="btn btn-danger">Delete</button>
-      //         </td>
-      //       </tr>
-      //     </tbody>
-      //   </table>
-      // </div>
     )
   }
 

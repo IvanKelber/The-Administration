@@ -26,6 +26,9 @@ class ComponentsController < ApplicationController
   end
 
   def destroy
+    @component = Component.find(params[:id])
+    @component.destroy
+    head :no_content
   end
 
   def edit

@@ -71,9 +71,8 @@ export default class ComponentIndex extends React.Component {
 
 
   handleClick() {
-    // event.preventDefault();
-    // console.log(this)
-    // console.log(event)
+    event.preventDefault();
+
     if(this.state.create_mode) {
       this.setState({create_mode:false})
     } else {
@@ -105,8 +104,9 @@ export default class ComponentIndex extends React.Component {
 
   deleteComponent(component) {
     var index = this.state.components.indexOf(component)
-    components = React.addons.update(this.state.components, { $splice: [[index,1]] })
-    this.replaceState({ components: components});
+    var components = this.state.components;
+    components.splice(index,1);
+    this.setState({ components: components, modal_open:false, current_component:null});
   };
   //
   render() {
@@ -132,7 +132,7 @@ export default class ComponentIndex extends React.Component {
           show={this.state.modal_open}
           onHide={this.closeModal}>
           <div style={dialogStyle()}>
-            <ComponentBox component={this.state.current_component}/>
+            <ComponentBox component={this.state.current_component} onDelete={this.deleteComponent}/>
           </div>
         </Modal>
 

@@ -56,8 +56,14 @@ export class ComponentBox extends React.Component {
 
   deleteClick(event) {
     event.preventDefault();
-
-    console.log("delete");
+    $.ajax({
+      method:"DELETE",
+      url:"/components/" + this.props.component.id,
+      dataType:"JSON",
+      success: function() {
+        this.props.onDelete(this.props.component);
+      }.bind(this)
+    });
   };
 
   updateClick(event) {
